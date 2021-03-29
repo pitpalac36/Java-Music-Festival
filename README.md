@@ -12,7 +12,7 @@ Features :
   
   --------------------------------------------------------
   
-  tema1 -> domain classes, repository hierarchy and implementations using JDBC SQLite; logging done with log4j
+  tema1 -> domain classes, repository hierarchy and implementations using JDBC SQLite; logging done with log4j; junit tests
   
   tema2 -> service and controller layers done; GUI done using javaFX
   
