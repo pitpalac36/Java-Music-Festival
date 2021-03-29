@@ -1,0 +1,57 @@
+Ó16 Mar 2021 12:16:29,578 INFO  repository.ShowDbRepository 19 <init> - Initializing repository.ShowDbRepository with properties : {jdbc.user=test, jdbc.url=jdbc:sqlite:C:\Users\Laura\Documents\sqliteDBs\musicFestival.db, jdbc.pass=test}
+L16 Mar 2021 12:16:29,624 TRACE repository.DbUtils 45 getConnection - Enter
+O16 Mar 2021 12:16:29,625 TRACE repository.DbUtils 23 getNewConnection - Enter
+´16 Mar 2021 12:16:29,627 INFO  repository.DbUtils 27 getNewConnection - trying to connect to database ... jdbc:sqlite:C:\Users\Laura\Documents\sqliteDBs\musicFestival.db
+T16 Mar 2021 12:16:29,629 INFO  repository.DbUtils 28 getNewConnection - user: test
+T16 Mar 2021 12:16:29,630 INFO  repository.DbUtils 29 getNewConnection - pass: test
+v16 Mar 2021 12:16:30,105 TRACE repository.DbUtils 54 getConnection - Exit with(org.sqlite.SQLiteConnection@2687f50f)
+W16 Mar 2021 12:16:30,106 TRACE repository.ShowDbRepository 26 findOne - entry findOne
+b16 Mar 2021 12:16:30,122 INFO  repository.ShowDbRepository 31 findOne - Show with id 1 was found
+_16 Mar 2021 12:16:30,153 TRACE repository.ShowDbRepository 50 findArtists - entry findArtists
+X16 Mar 2021 12:16:30,155 INFO  repository.ShowDbRepository 53 findArtists - 2021-03-15
+^16 Mar 2021 12:16:30,157 TRACE repository.ShowDbRepository 66 findArtists - exit findArtists
+∞Show{id=1, artistName='descend into despair', date=Mon Mar 15 00:00:00 EET 2021, location='Cluj-Napoca, str. Grivitei, 2/30', availableTicketsNumber=12, soldTicketsNumber=88}
+_16 Mar 2021 12:16:30,185 TRACE repository.ShowDbRepository 50 findArtists - entry findArtists
+X16 Mar 2021 12:16:30,186 INFO  repository.ShowDbRepository 53 findArtists - 2021-03-15
+^16 Mar 2021 12:16:30,212 TRACE repository.ShowDbRepository 66 findArtists - exit findArtists
+W16 Mar 2021 12:16:30,216 TRACE repository.ShowDbRepository 96 findAll - entry findAll
+W16 Mar 2021 12:16:30,235 TRACE repository.ShowDbRepository 110 findAll - exit findAll
+U16 Mar 2021 12:16:30,237 TRACE repository.ShowDbRepository 77 update - entry update
+™16 Mar 2021 12:16:30,285 INFO  repository.ShowDbRepository 86 update - updated show : Show{id=4, artistName='artistcdae121f-7aa1-405f-bf96-53ff82bcd472', date=Tue Mar 16 12:16:30 EET 2021, location='locationcdae121f-7aa1-405f-bf96-53ff82bcd472', availableTicketsNumber=100, soldTicketsNumber=100}
+T16 Mar 2021 12:16:30,287 TRACE repository.ShowDbRepository 87 update - exit update
+W16 Mar 2021 12:16:30,289 TRACE repository.ShowDbRepository 26 findOne - entry findOne
+b16 Mar 2021 12:16:30,290 INFO  repository.ShowDbRepository 31 findOne - Show with id 4 was found
+^16 Mar 2021 12:16:30,295 TRACE repository.DbUtils 59 closeConnection - entry closeConnection
+ç16 Mar 2021 12:16:30,302 INFO  repository.DbUtils 63 closeConnection - connection org.sqlite.SQLiteConnection@2687f50f successfully closed!
+Ú16 Mar 2021 12:16:30,317 INFO  repository.TicketDbRepository 21 <init> - Initializing repository.TicketDbRepository with properties : {jdbc.user=test, jdbc.url=jdbc:sqlite:C:\Users\Laura\Documents\sqliteDBs\musicFestival.db, jdbc.pass=test}
+L16 Mar 2021 12:16:30,321 TRACE repository.DbUtils 45 getConnection - Enter
+O16 Mar 2021 12:16:30,322 TRACE repository.DbUtils 23 getNewConnection - Enter
+´16 Mar 2021 12:16:30,323 INFO  repository.DbUtils 27 getNewConnection - trying to connect to database ... jdbc:sqlite:C:\Users\Laura\Documents\sqliteDBs\musicFestival.db
+T16 Mar 2021 12:16:30,327 INFO  repository.DbUtils 28 getNewConnection - user: test
+T16 Mar 2021 12:16:30,328 INFO  repository.DbUtils 29 getNewConnection - pass: test
+v16 Mar 2021 12:16:30,356 TRACE repository.DbUtils 54 getConnection - Exit with(org.sqlite.SQLiteConnection@75d749d7)
+Y16 Mar 2021 12:16:30,358 TRACE repository.TicketDbRepository 49 findAll - entry findAll
+X16 Mar 2021 12:16:30,369 TRACE repository.TicketDbRepository 58 findAll - exit findAll
+S16 Mar 2021 12:16:30,371 TRACE repository.TicketDbRepository 28 save - entry save
+16 Mar 2021 12:16:30,386 INFO  repository.TicketDbRepository 35 save - added Ticket{showId=1, purchaserName='test', number=2}
+Q16 Mar 2021 12:16:30,387 TRACE repository.TicketDbRepository 40 save - exit add
+Y16 Mar 2021 12:16:30,388 TRACE repository.TicketDbRepository 49 findAll - entry findAll
+X16 Mar 2021 12:16:30,390 TRACE repository.TicketDbRepository 58 findAll - exit findAll
+®[Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}, Ticket{showId=1, purchaserName='test', number=2}]
+^16 Mar 2021 12:16:30,392 TRACE repository.DbUtils 59 closeConnection - entry closeConnection
+ç16 Mar 2021 12:16:30,394 INFO  repository.DbUtils 63 closeConnection - connection org.sqlite.SQLiteConnection@75d749d7 successfully closed!
+Ó16 Mar 2021 12:16:30,398 INFO  repository.UserDbRepository 20 <init> - Initializing repository.UserDbRepository with properties : {jdbc.user=test, jdbc.url=jdbc:sqlite:C:\Users\Laura\Documents\sqliteDBs\musicFestival.db, jdbc.pass=test}
+L16 Mar 2021 12:16:30,399 TRACE repository.DbUtils 45 getConnection - Enter
+O16 Mar 2021 12:16:30,400 TRACE repository.DbUtils 23 getNewConnection - Enter
+´16 Mar 2021 12:16:30,401 INFO  repository.DbUtils 27 getNewConnection - trying to connect to database ... jdbc:sqlite:C:\Users\Laura\Documents\sqliteDBs\musicFestival.db
+T16 Mar 2021 12:16:30,402 INFO  repository.DbUtils 28 getNewConnection - user: test
+T16 Mar 2021 12:16:30,403 INFO  repository.DbUtils 29 getNewConnection - pass: test
+v16 Mar 2021 12:16:30,484 TRACE repository.DbUtils 54 getConnection - Exit with(org.sqlite.SQLiteConnection@1aa517a7)
+W16 Mar 2021 12:16:30,486 TRACE repository.UserDbRepository 27 findOne - entry findOne
+Ñ16 Mar 2021 12:16:30,491 INFO  repository.UserDbRepository 33 findOne - User with username : test1 and password : test1 was found!
+W16 Mar 2021 12:16:30,496 TRACE repository.UserDbRepository 27 findOne - entry findOne
+É16 Mar 2021 12:16:30,500 INFO  repository.UserDbRepository 36 findOne - User with username : asdfcv and password : sdf not found!
+W16 Mar 2021 12:16:30,502 TRACE repository.UserDbRepository 48 findAll - entry findAll
+V16 Mar 2021 12:16:30,515 TRACE repository.UserDbRepository 57 findAll - exit findAll
+^16 Mar 2021 12:16:30,516 TRACE repository.DbUtils 59 closeConnection - entry closeConnection
+ç16 Mar 2021 12:16:30,517 INFO  repository.DbUtils 63 closeConnection - connection org.sqlite.SQLiteConnection@1aa517a7 successfully closed!

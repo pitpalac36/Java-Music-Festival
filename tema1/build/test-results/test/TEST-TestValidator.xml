@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestValidator" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-03-16T10:16:30" hostname="DESKTOP-34MD1UU" time="0.003">
+  <properties/>
+  <testcase name="testUserInvalidUsername" classname="TestValidator" time="0.001"/>
+  <testcase name="testValidUser" classname="TestValidator" time="0.0"/>
+  <testcase name="testUserInvalidPassword" classname="TestValidator" time="0.0"/>
+  <testcase name="testUserInvalidCredentials" classname="TestValidator" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
