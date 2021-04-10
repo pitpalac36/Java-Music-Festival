@@ -17,3 +17,5 @@ Features :
   tema2 -> service and controller layers done; GUI done using javaFX
   
   tema3 -> refactoring project to a multi-threaded client-server project with model, persistance, services, networking, client and server gradle modules; using DTO protocol (serialized objects)
+
+tema4_spring -> using Spring remoting for networking
