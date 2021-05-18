@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcProps">
+        <prop key="jdbc.driver">org.sqlite.JDBC</prop>
+        <prop key="jdbc.url">jdbc:sqlite:C://Users//Laura//Documents//sqliteDBs//musicFestival.db</prop>
+    </util:properties>
+
+    <bean id="userRepo" class="festival.persistance.UserDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="ticketRepo" class="festival.persistance.TicketDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="showRepo" class="festival.persistance.ShowDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="artistRepo" class="festival.persistance.ArtistDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="service" class="festival.server.Service">
+        <constructor-arg ref="userRepo"/>
+        <constructor-arg ref="ticketRepo"/>
+        <constructor-arg ref="showRepo"/>
+    </bean>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="ClientServer"/>
+        <property name="service" ref="service"/>
+        <property name="serviceInterface" value="festival.services.IService"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+</beans>
