@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="redeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
+        <property name="topic" value="FestivalTopic"/>
+        <property name="maximumRedeliveries" value="3"/>
+        <property name="initialRedeliveryDelay" value="10000"/>
+    </bean>
+
+
+<!--    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">-->
+<!--        <property name="brokerURL" value="tcp://localhost:61616"/>-->
+<!--        <property name="trustedPackages">-->
+<!--            <list>-->
+<!--                <value>festival.domain.models</value>-->
+<!--                <value>festival.domain.notification</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="redeliveryPolicy" ref="redeliveryPolicy"/>-->
+<!--    </bean>-->
+
+
+    <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="tcp://localhost:61616"/>
+                <property name="trustedPackages">
+                    <list>
+                        <value>festival.domain.models</value>
+                        <value>festival.domain.notification</value>
+                    </list>
+                </property>
+                <property name="redeliveryPolicy" ref="redeliveryPolicy"/>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="FestivalTopic"/>
+    </bean>
+
+    <bean id="converter" class="org.springframework.jms.support.converter.MappingJackson2MessageConverter">
+        <property name="targetType" value="TEXT"/>
+        <property name="typeIdPropertyName" value="_notification"/>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="jmsFactory"/>
+        <property name="defaultDestination" ref="topic"/>
+        <property name="messageConverter" ref="converter"/>
+    </bean>
+
+    <bean id="notificationReceiver" class="festival.client.NotificationReceiverImpl">
+        <constructor-arg ref="jmsTemplate"/>
+    </bean>
+
+    <util:properties id="clientProps" location="classpath:client.properties"/>
+    <bean id="service" class="festival.networking.objectprotocol.ams.ServicesAMSObjectProxy">
+        <constructor-arg index="1" value="#{clientProps.getProperty('server.port')}"/>
+        <constructor-arg index="0" value="#{clientProps.getProperty('server.host')}"/>
+    </bean>
+</beans>

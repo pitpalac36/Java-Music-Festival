@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="festival.client.ModalController">
+    <children>
+        <TableView fx:id="artistsTableView" layoutX="82.0" layoutY="28.0" prefHeight="286.0" prefWidth="435.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="117.5999755859375" text="Artist Name" />
+                <TableColumn fx:id="locationColumn" prefWidth="109.60003662109375" text="Location" />
+                <TableColumn fx:id="dateColumn" prefWidth="101.60003662109375" text="Starts At" />
+                <TableColumn fx:id="availableTicketsNumberColumn" prefWidth="109.5999755859375" text="Available Tickets" />
+            </columns>
+        </TableView>
+        <Button fx:id="okButton" layoutX="268.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#closeModal" prefHeight="34.0" prefWidth="74.0" text="OK" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcProps">
+        <prop key="server.port">55556</prop>
+        <prop key="jdbc.driver">org.sqlite.JDBC</prop>
+        <prop key="jdbc.url">jdbc:sqlite:C://Users//Laura//Documents//sqliteDBs//musicFestival.db</prop>
+    </util:properties>
+
+    <bean id="userRepo" class="festival.persistance.UserDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="ticketRepo" class="festival.persistance.TicketDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="showRepo" class="festival.persistance.ShowDbRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="useAsyncSend" value="true" />
+    </bean>
+
+    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="FestivalTopic"/>
+    </bean>
+
+    <bean id="converter" class="org.springframework.jms.support.converter.MappingJackson2MessageConverter">
+        <property name="targetType" value="TEXT"/>
+        <property name="typeIdPropertyName" value="_notification"/>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="connectionFactory"/>
+        <property name="defaultDestination" ref="topic"/>
+        <property name="messageConverter" ref="converter"/>
+    </bean>
+
+    <bean id="notificationService" class="festival.server.NotificationServiceImpl">
+        <constructor-arg ref="jmsTemplate"/>
+    </bean>
+
+    <bean id="server" class="festival.server.Service">
+        <constructor-arg ref="userRepo"/>
+        <constructor-arg ref="ticketRepo"/>
+        <constructor-arg ref="showRepo"/>
+        <constructor-arg ref="notificationService"/>
+    </bean>
+
+    <bean id="tcpServer" class="festival.networking.objectprotocol.ams.ObjectAMSConcurrentServer">
+        <constructor-arg value="#{jdbcProps.getProperty('server.port')}"/>
+        <constructor-arg ref="server"/>
+    </bean>
+</beans>

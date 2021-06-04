@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project (':Model')
+    implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.18.v20190429'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.8.1'
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-jms:$springVersion"
+    compile "org.apache.activemq:activemq-spring:$activeMQVersion"
+    testCompile "junit:junit-dep:$junitVersion"
+}
