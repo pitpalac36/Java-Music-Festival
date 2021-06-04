@@ -21,3 +21,9 @@ Features :
   tema4_spring -> using Spring remoting for networking
 
   tema6_hibernate -> using Hibernate for persistence and database operations management
+  
+  tema7_rest -> rest services for artist resource (only the endpoints; tested with Postman)
+
+  tema8_react -> React client for artist resource operations (using rest services from previous assignment)
+  
+  tema9_activemq -> notifications done using Apache ActiveMQ topics (Spring JMS)
